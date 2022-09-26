@@ -1,0 +1,100 @@
+table {
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #b6b7b7;
+}
+
+th,
+td {
+  padding: 5px;
+  width: 20%;
+}
+.card-pokemon {
+  border: 1px solid #b6b7b7;
+  margin-top: 20px;
+}
+.card-row {
+  display: flex;
+  width: 100%;
+}
+.card-col {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.action-icon {
+  cursor: pointer;
+  color: #3f51b5;
+}
+
+.action-icon:hover {
+  color: #50535a;
+}
+
+.margin-x {
+  margin-left: 6em;
+  margin-right: 6em;
+}
+
+.margin-y {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.input-card {
+  margin-left: 1em;
+  width: 50%;
+  border: 1px solid #b6b7b7;
+  border-radius: 4px;
+  padding: 5px 15px;
+}
+
+.input-card:focus-visible {
+  outline: red solid 1px;
+}
+
+.input-search {
+  width: 20%;
+  border: 1px solid #b6b7b7;
+  border-radius: 4px;
+  padding: 5px 15px;
+  padding-left: 35px;
+}
+
+.input-search:focus-visible {
+  outline: #3f51b5 solid 1px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  color: #191919;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.w-15 {
+  width: 15%;
+}
+
+.w-85 {
+  width: 85%;
+}
+
+.input-radio {
+  width: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+}

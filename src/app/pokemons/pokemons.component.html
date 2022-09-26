@@ -1,0 +1,83 @@
+<div class="input-wrapper">
+    <input class="input-search" type="text" [(ngModel)]="searchText" placeholder="Buscar">
+    <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd" />
+    </svg>
+</div>
+<div class="text-right">
+    <button (click)="new()"><span class="material-icons">add</span> Nuevo</button>
+</div>
+<table style="width: 100%;">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Ataque</th>
+            <th>Defensa</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pokemon of pokemons | searchFilter: searchText">
+            <td>{{pokemon.name}}</td>
+            <td class="text-center"> <img [src]="pokemon.image" width="35px" height="35px"> </td>
+            <td>{{pokemon.attack}}</td>
+            <td>{{pokemon.defense}}</td>
+            <td>
+                <div class="card-row">
+                    <div class="card-col justify-content-center"><span class="material-icons-outlined action-icon"
+                            (click)="onSelect(pokemon)">edit</span>
+                    </div>
+                    <div class="card-col justify-content-center"><span class="material-icons action-icon"
+                            (click)="delete(pokemon)">delete_outline</span>
+                    </div>
+                </div>
+
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="verCard" class="card-pokemon margin-y">
+    <p *ngIf="!isEdit" class="text-center margin-y">Nuevo Pokemon</p>
+    <p *ngIf="isEdit" class="text-center margin-y">Editar Pokemon {{pokemon.name}}</p>
+    <div class="card-row margin-x margin-y">
+        <div class="card-col">
+            <label for="name">Nombre: </label>
+            <input id="name" type="text" class="input-card" [(ngModel)]="pokemon.name" placeholder="nombre">
+        </div>
+        <div class="card-col">
+            <div class="w-15">
+                <label for="name">Ataque: </label>
+            </div>
+            <div class="w-85">
+                <span>0</span><input class="input-radio" type="range" min="1" max="100"
+                    [(ngModel)]="pokemon.attack"><span>100</span>
+            </div>
+        </div>
+    </div>
+    <div class="card-row margin-x margin-y">
+        <div class="card-col">
+            <label for="image">Imagen: </label>
+            <input id="image" type="text" class="input-card" [(ngModel)]="pokemon.image" placeholder="url">
+        </div>
+        <div class="card-col">
+            <div class="w-15">
+                <label for="name">Defensa: </label>
+            </div>
+            <div class="w-85">
+                <span>0</span><input class="input-radio" type="range" min="1" max="100"
+                    [(ngModel)]="pokemon.defense"><span>100</span>
+            </div>
+        </div>
+    </div>
+    <div class="card-row justify-content-center margin-y">
+        <button *ngIf="!isEdit" (click)="add(pokemon)"><span class="material-icons-outlined">save</span>
+            Guardar</button>
+        <button *ngIf="isEdit" (click)="save()"><span class="material-icons-outlined">save</span> Guardar</button>
+        <button (click)="cancel()"><span class="material-icons">close</span> Cancelar</button>
+    </div>
+</div>
